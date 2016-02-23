@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  #
+  # -------------------------------
+  # App:
+  # landing page, About
   root 'welcome#index'
+  get  'about', to: 'welcome#about'
+  # -------------------------------
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

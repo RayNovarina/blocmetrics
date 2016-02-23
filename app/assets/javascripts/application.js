@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+// ------------------------------
+// For Twitter Bootstrap per:
+//   https://www.bloc.io/users/ray-novarina/checkpoints/1634#css-frameworks-and-bootstrap
+//= require bootstrap
+// -------------------------------
 //= require_tree .
