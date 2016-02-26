@@ -2,7 +2,7 @@
   <h1>Welcome!</h1>
   <p>Blocmetrics is an analytics service to track events on websites.</p><br>
   <% if true #policy(User).create? %>
-    <p><%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %> to get started.</p>
+    <p><%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg' %> to get started.</p>
   <% end %>
   <p>
     <h4><%= link_to 'Learn More', '#learn-more-link', name: 'learn-more-link',
