@@ -76,6 +76,9 @@ Rails.application.configure do
   # In terminal window/shell run mailcatcher via: > mailcatcher
   # It will intercept email sent to port 25? and post/redirect it? to port
   # 1025?. In a browser run the mailcatcher web app at: http://127.0.0.1:1080
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
+  #
+  # 4) To send from local dev to console via ActionMailer::MailInterceptor
+  # This is done via the config/initializers/mail.rb file set up for Mailgun.
 end
