@@ -24,10 +24,16 @@ gem 'turbolinks'
 #-------------------------------------------
 # Use Twitter Bootstrap 4 (4.0.0.alpha3?) as CSS framework
 # gem 'bootstrap'
+#------------------------------------------
+# Use Twitter Bootstrap 3 as CSS framework
+gem 'bootstrap-sass'
 #-------------------------------------------
-# Use Sass-powered version of Twitter Bootstrap 3 as CSS framework
-gem 'bootstrap-sass', '~> 3.3.6'
-#-------------------------------------------
+# per: http://www.sitepoint.com/devise-authentication-in-depth/
+# If you are using Bootstrap's dropdown menu. Dropdown relies on JavaScript code
+# and, using Turbolinks, it won't be executed correctly when navigating between
+# pages. Use jquery-turbolinks to fix this:
+gem 'jquery-turbolinks'
+#--------------------------------------------
 # Use Figaro to store Sendgrid and Devise credentials as environment variables.
 #     Doc - Bloc: https://www.bloc.io/resources/environment-variables-with-figaro
 #     GitHub - https://github.com/laserlemon/figaro#give-me-an-example
@@ -38,7 +44,12 @@ gem 'figaro', '1.0'
 #         insert " binding.pry " in the code to where you want the breakpoint.
 gem 'pry'
 #-------------------------------------------
-
+# Use Devise authentication
+gem 'devise'
+#-------------------------------------------
+# Use Pundit authorization
+gem 'pundit'
+#-------------------------------------------
 #
 #============== DEVELOPMENT only GEMS =================
 group :development do
