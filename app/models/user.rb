@@ -1,5 +1,7 @@
 #
 class User < ActiveRecord::Base
+  has_many :registered_applications
+
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

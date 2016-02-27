@@ -1,32 +1,22 @@
 #
 class Users::PasswordsController < Devise::PasswordsController
+  before_action :make_view_helper
+
   # GET /resource/password/new
-  def new
-    super do |_resource|
-      @view = ApplicationHelper::View.new(params)
-    end
-  end
+  # def new
+  # end
 
   # POST /resource/password
-  def create
-    super do |_resource|
-      @view = ApplicationHelper::View.new(params)
-    end
-  end
+  # def create
+  # end
 
   # GET /resource/password/edit?reset_password_token=abcdef
-  def edit
-    super do |_resource|
-      @view = ApplicationHelper::View.new(params)
-    end
-  end
+  # def edit
+  # end
 
   # PUT /resource/password
-  def update
-    super do |_resource|
-      @view = ApplicationHelper::View.new(params)
-    end
-  end
+  # def update
+  # end
 
   # protected
 
@@ -38,4 +28,10 @@ class Users::PasswordsController < Devise::PasswordsController
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
+
+  private
+
+  def make_view_helper
+    @view = ApplicationHelper::View.new(self, resource || User.new)
+  end
 end

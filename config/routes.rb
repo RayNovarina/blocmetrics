@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'pages/index'
-
-  get 'pages/about'
-
   # devise_for :users
   # per: https://github.com/plataformatec/devise#getting-started
   #   "you can customize each controller", "Tell the router to use this
@@ -13,6 +9,12 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     confirmations: 'users/confirmations'
   }
+
+  resources :users, only: [:index, :show]
+
+  resources :registered_applications,
+            only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
   # -------------------------------
   # App:
   # landing page, About

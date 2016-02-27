@@ -11,8 +11,22 @@ class ApplicationController < ActionController::Base
 
   #============== DEVISE Authentication gem related ===========================
   # per doc at: https://github.com/plataformatec/devise#getting-started
+  # Most devise helpers for views and controllers are found in sources at:
+  #   gems/devise-3.5.6/lib/devise/controllers/helpers.rb
   #   I generated copies of the devise controllers to /app/controllers/users
   #   and set the sign_in and sign_out paths, added name to sign_up page, etc.
+  #     after_sign_out_path_for method in
+  #       controllers/users/sessions_controller.rb
+  #   after_sign_in_path_for method in
+  #       controllers/users/sessions_controller.rb
+  #   after_sign_up_path_for method in
+  #       controllers/users/sessions_controller.rb
+  #   Added name to configure_sign_up_params at
+  #      controllers/users/registrations_controller.rb
+  #   Added name to configure_account_update_params at
+  #      controllers/users/registrations_controller.rb
+  #   If name added to sign_in form, add name to configure_sign_in_params at
+  #       controllers/users/sessions_controller.rb
 
   private
 

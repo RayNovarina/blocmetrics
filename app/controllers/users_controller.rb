@@ -1,11 +1,13 @@
 #
-class PagesController < ApplicationController
+class UsersController < ApplicationController
   before_action :make_view_helper
 
   def index
+    @view.users = User.all
   end
 
-  def about
+  def show
+    @view.user = User.find(params[:id])
   end
 
   private
