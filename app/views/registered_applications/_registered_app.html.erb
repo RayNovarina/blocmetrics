@@ -1,5 +1,3 @@
-<% require 'pry'
-binding.pry %>
 <div class="row css-regd-app-container" style="background: white;">
 
   <div class="col-md-8">
@@ -7,8 +5,13 @@ binding.pry %>
       <div class="media-body">
         <h4 class="media-heading">
             <span class="css-regd-app-name" style="overflow: hidden; text-decoration: underline;">
-              <%= link_to @view.locals[:app].name, @view.locals[:app].url, target: '_blank',
+              <%= link_to @view.locals[:app].name,
+                          registered_application_path(@view.locals[:app]),
                           title: "Created by: #{@view.locals[:app].user.name}" %>
+            <span>
+            <span style="color: black; font-weight: bold; ext-decoration: none;">&nbsp;at&nbsp;</span>
+            <span class="css-regd-app-url" style="overflow: hidden; text-decoration: underline;">
+              <%= link_to @view.locals[:app].url, @view.locals[:app].url, target: '_blank' %>
             <span>
         </h4>
       </div>
@@ -28,7 +31,7 @@ binding.pry %>
           <% end %>
           <% if true #policy(props[:bookmark]).edit? && rpt_bmk(props)[:include_edit] %>
             <span class="pull-right css-regd-app-action" style="padding-top: 4px; padding-right: 4px;">
-              <%= link_to 'Edit', edit_registered_application(@view.locals[:app]),
+              <%= link_to 'Edit', edit_registered_application_path(@view.locals[:app]),
                           class: 'btn btn-xs btn-success' %>
             </span>
           <% end %>

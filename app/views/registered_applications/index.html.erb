@@ -1,10 +1,10 @@
-<header class="css-page-header">
+<header class="css-body-header">
   <%= render partial: 'index_page_header',
              locals: @view.locals = { title: 'My Registered Applications' }
   %>
 </header>
 
-<main>
+<main class="css-body-main">
   <% @view.apps.each_with_index do |app, index| %>
     <%= render partial: 'registered_app',
                locals: @view.locals = { app: app, apps_index: index }
