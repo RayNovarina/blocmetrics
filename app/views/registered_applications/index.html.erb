@@ -1,2 +1,13 @@
-<h1>RegisteredApplications#index</h1>
-<p>Find me in app/views/registered_applications/index.html.erb</p>
+<header class="css-page-header">
+  <%= render partial: 'index_page_header',
+             locals: @view.locals = { title: 'My Registered Applications' }
+  %>
+</header>
+
+<main>
+  <% @view.apps.each_with_index do |app, index| %>
+    <%= render partial: 'registered_app',
+               locals: @view.locals = { app: app, apps_index: index }
+    %>
+  <% end %>
+</main>

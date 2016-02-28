@@ -1,0 +1,14 @@
+<div class="css-new-edit-form">
+  <%= form_for @view.app  do |f| %>
+
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Enter Application name' %>
+
+    <%= f.label :url %><br />
+    <%= f.text_field :url, rows: 2, class: 'form-control', placeholder: 'Enter application url' %>
+
+    <div class="css-actions">
+      <%= f.submit(@view.app.new_record? ? 'Register App' : 'Update Registration', class: 'btn btn-primary') %>
+    </div>
+  <% end %>
+</div>

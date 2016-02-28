@@ -3,14 +3,16 @@ Rails.application.routes.draw do
   # per: https://github.com/plataformatec/devise#getting-started
   #   "you can customize each controller", "Tell the router to use this
   #   controller"
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations',
-    passwords: 'users/passwords',
-    confirmations: 'users/confirmations'
-  }
+  devise_for :users,
+             controllers: {
+               sessions: 'users/sessions',
+               registrations: 'users/registrations',
+               passwords: 'users/passwords',
+               confirmations: 'users/confirmations'
+             }
 
   resources :users, only: [:index, :show]
+  get '/settings', to: 'users#settings', as: 'settings'
 
   resources :registered_applications,
             only: [:index, :show, :new, :create, :edit, :update, :destroy]

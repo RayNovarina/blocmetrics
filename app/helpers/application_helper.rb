@@ -5,7 +5,7 @@ module ApplicationHelper
   #
   class View
     attr_reader :id, :name
-    attr_accessor :signed_out_user, :user, :apps, :app
+    attr_accessor :locals, :signed_out_user, :user, :apps, :app
 
     def initialize(controller, model)
       @id = object_id
@@ -14,6 +14,23 @@ module ApplicationHelper
       @controller = controller
       @model = model
     end
+
+    # def set_locals(new_locals)
+    #  @locals = new_locals
+    # end
+
+    # def locals
+    #  @locals
+    # end
+
+    # def locals(arg)
+    #  if defined? arg == 'Hash'
+    #    @locals = new_locals if defined? arg == 'Hash'
+    #    self
+    #  else
+    #    @locals[arg]
+    #  end
+    # end
 
     # If authentication system (i.e. Devise) active.
     # controller.is_a?(::DeviseController)

@@ -10,6 +10,9 @@ class UsersController < ApplicationController
     @view.user = User.find(params[:id])
   end
 
+  def settings
+  end
+
   private
 
   def make_view_helper

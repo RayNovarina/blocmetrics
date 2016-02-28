@@ -1,0 +1,28 @@
+<header>
+  <div class="row">
+    <div class="col-md-8 css-page-title">
+      <div class="media">
+        <div class="media-body">
+          <h2 class="media-heading"><%= @view.locals[:title] %></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="row">
+    <div class="col-md-4">
+      <p>FAQs about registering a new application:</p>
+      <ul>
+        <li>Make sure ..............</li>
+        <li>And also .................</li>
+        <li>Besides ..................</li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <%= render partial: 'shared/errors', locals: @view.locals = { obj: @view.app } %>
+      <%= render partial: 'new_edit_form' %>
+    </div>
+  </div>
+</main>
