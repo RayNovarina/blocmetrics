@@ -88,4 +88,6 @@ group :production do
   # Rails 4 requires some minor configuration changes to properly serve assets
   # on Heroku
   gem 'rails_12factor'
+  #-------------------------------------------
+  gem 'faker'
 end
