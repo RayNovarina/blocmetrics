@@ -5,7 +5,8 @@ module ApplicationHelper
   #
   class View
     attr_reader :id, :name
-    attr_accessor :locals, :signed_out_user, :user, :apps, :app
+    attr_accessor :locals, :signed_out_user, :user, :apps, :app, :events,
+                  :event, :event_group_counts
 
     def initialize(controller, model)
       @id = object_id

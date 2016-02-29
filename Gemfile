@@ -56,14 +56,14 @@ group :development do
   # Use sqlite3 as the SQL db server for Active Record in development/local OSX
   # machine.
   gem 'sqlite3'
+  #-------------------------------------------
+  gem 'web-console', '~> 2.0'
 end
 
 #
 #============ DEVELOPMENT, TEST only GEMS =============
 group :development, :test do
   gem 'byebug'
-  #-------------------------------------------
-  gem 'web-console', '~> 2.0'
   #-------------------------------------------
   gem 'spring'
   #-------------------------------------------
