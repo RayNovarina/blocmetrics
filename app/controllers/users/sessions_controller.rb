@@ -36,7 +36,8 @@ class Users::SessionsController < Devise::SessionsController
     # binding.pry
     # Note: at this time: flash[:notice] => "Signed in successfully."
     #                     current_user is valid.
-    user_path(@view.current_user) # users#show
+    # user_path(@view.current_user) # users#show
+    registered_applications_path # registered_applications#index
   end
 
   private

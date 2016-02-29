@@ -28,6 +28,7 @@ class RegisteredApplicationsController < ApplicationController
   # Note: we get here from a submit button via the new view.
   def create
     @view.app = RegisteredApplication.new(submitted_params_whitelist)
+    @view.app.url = fixup_url
     @view.app.user = @view.current_user
 
     if @view.app.save
@@ -85,5 +86,16 @@ class RegisteredApplicationsController < ApplicationController
 
   def submitted_params_whitelist
     params.require(:registered_application).permit(:name, :url)
+  end
+
+  # Given user input of a partial url, convert to absolute url.
+  def fixup_url
+    unless @view.app.url.starts_with?('http')
+      unless @view.app.url.starts_with?('www')
+        @view.app.url = 'www.' << @view.app.url
+      end
+      @view.app.url = 'http://' << @view.app.url
+    end
+    @view.app.url
   end
 end
