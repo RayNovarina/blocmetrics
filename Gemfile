@@ -50,12 +50,26 @@ gem 'devise'
 # Use Pundit authorization
 gem 'pundit'
 #-------------------------------------------
+# Generate data for seeding database.
+gem 'faker'
+#-------------------------------------------
+# Use Chartkick for displaying graphs
+gem 'chartkick'
+#-------------------------------------------
+# Use GroupDate to create a line chart of events over time.
+# Note: requires that Chartkick be installed.
+gem 'groupdate'
+#-------------------------------------------
+# use postgre SQL db server for Active Record
+gem 'pg'
+#--------------------------------------------
 #
 #============== DEVELOPMENT only GEMS =================
 group :development do
   # Use sqlite3 as the SQL db server for Active Record in development/local OSX
   # machine.
-  gem 'sqlite3'
+  # Note: not supported by GroupDate gem for graphs. Use postgre instead.
+  # gem 'sqlite3'
   #-------------------------------------------
   gem 'web-console', '~> 2.0'
 end
@@ -73,8 +87,6 @@ group :development, :test do
   # To use: ??
   gem 'shoulda'
   #-------------------------------------------
-  gem 'faker'
-  #-------------------------------------------
   gem 'factory_girl_rails'
 end
 
@@ -83,11 +95,11 @@ end
 group :production do
   # use postgre SQL db server for Active Record in production (Heroku)
   # deployment
-  gem 'pg'
+  # Note: now using postgre in dev system/OSX.
+  # gem 'pg'
   #-------------------------------------------
   # Rails 4 requires some minor configuration changes to properly serve assets
   # on Heroku
   gem 'rails_12factor'
   #-------------------------------------------
-  gem 'faker'
 end

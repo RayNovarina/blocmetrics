@@ -4,10 +4,22 @@
 </header>
 
 <main class="css-body-main">
-  <% @view.event_group_counts.each do |name, count| %>
-    <%= render partial: '/events/event',
+
+  <%= render partial: '/events/styles/pie_chart_rpt_header' %>
+  <%= render partial: '/events/styles/pie_chart_event' #,
+      #       locals: @view.locals = { data: @view.event_group_counts }
+  %>
+
+  <%= render partial: '/events/styles/line_chart_rpt_header' %>
+  <%= render partial: '/events/styles/line_chart_event' %>
+
+  <%= render partial: '/events/styles/column_rpt_header' %>
+  <% # @view.event_group_counts.each do |name, count| %>
+  <% @view.app.events.group(:name).reorder('name ASC').count.each do |name, count| %>
+    <%= render partial: '/events/styles/column_event',
                locals: @view.locals =
                  { name: name, count: count }
     %>
   <% end %>
+
 </main>
