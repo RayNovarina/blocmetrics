@@ -59,5 +59,10 @@ module ApplicationHelper
       # /gems/ruby-2.2.4/gems/devise-3.5.6/lib/devise/controllers/helpers.rb
       devise? ? @controller.current_user : User.new
     end
+
+    #
+    def flash_messages
+      @controller.flash
+    end
   end
 end

@@ -1,4 +1,33 @@
 <div class="container">
-  <h2>Welcome Back <%= @view.current_user.name %>
+  <% num_sites = RegisteredApplication.where('user_id = ?', current_user.id).count
+     welcome_msg = "Welcome Back #{@view.current_user.name}"
+     if num_sites > 0
+       # line_chart @view.app.events.group_by_day(:created_at).count
+       # Event.where('registered_application_id = ?', 2).count
+       # Location.select(:city).group(:city).order("SUM(images_count) DESC").sum(:images_count)
+       # @topics_with_user_bookmarks =
+       #   Topic.select('topics.*, topics.id, LOWER(topics.title)')
+       #      .joins(:bookmarks)
+       #      .where('bookmarks.user_id = ?', current_user.id)
+       #      .reorder('LOWER(topics.title) ASC')
+       #      .distinct('topics.id')
+
+       num_events = Event.joins(:registered_application)
+                         .where('user_id = ?', current_user.id)
+                         .count
+       welcome_msg.concat(
+         " your #{num_sites} monitored sites have had #{num_events} events \
+since your last visit #{time_ago_in_words(@view.current_user.created_at)} ago."
+       )
+       data_hash = Event.joins(:registered_application)
+                        .where('user_id = ?', current_user.id)
+                        .group('registered_applications.name')
+                        .count
+     end
+  %>
+  <h2><%= welcome_msg %>
+      <% if num_sites > 0 %>
+        <%= pie_chart data_hash %>
+      <% end %>
   </h2>
 </div>

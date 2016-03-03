@@ -7,7 +7,7 @@ class RegisteredApplicationsController < ApplicationController
   #   index, show, new, edit, create, update and destroy.
   #
   def index
-    @view.apps = RegisteredApplication.all
+    @view.apps = RegisteredApplication.where('user_id = ?', current_user.id)
     # Response: Controller will forward_to
     #           /views/registered_applications/index.html.erb with @view
   end

@@ -7,7 +7,8 @@ class RegisteredApplicationPolicy < ApplicationPolicy
     if user.present?
       # Is record an array of RegisteredApplication objects?
       (defined? record.length).nil? ? true : record.first.user == user
+    else
+      false
     end
-    false
   end
 end
