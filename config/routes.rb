@@ -19,9 +19,10 @@ Rails.application.routes.draw do
 
   # -------------------------------
   # App:
-  # landing page, About
-  root 'pages#index'
+  # Landing page, About
+  root 'pages#welcome'
   get  'about', to: 'pages#about'
+  get '/welcome_back', to: 'pages#welcome_back', as: 'welcome_back'
   # -------------------------------
 
   #-------------------------------
