@@ -8,12 +8,14 @@ class RegisteredApplicationsController < ApplicationController
   #
   def index
     @view.apps = RegisteredApplication.where('user_id = ?', current_user.id)
+    authorize @view.apps
     # Response: Controller will forward_to
     #           /views/registered_applications/index.html.erb with @view
   end
 
   def show
     @view.app = RegisteredApplication.find(params[:id])
+    authorize @view.app
     # { ":bath:"=>1, ":football:"=>1, ":mahjong:"=>1, ":musical_keyboard:"=>1,
     #   ":saxophone:"=>1, ":slot_machine:"=>1
     # }
@@ -25,6 +27,7 @@ class RegisteredApplicationsController < ApplicationController
   end
 
   def new
+    authorize RegisteredApplication
     @view.app = RegisteredApplication.new
     # Response: Controller will forward_to
     #           /views/registered_applications/new.html.erb with @view
@@ -33,6 +36,7 @@ class RegisteredApplicationsController < ApplicationController
 
   # Note: we get here from a submit button via the new view.
   def create
+    authorize RegisteredApplication
     @view.app = RegisteredApplication.new(submitted_params_whitelist)
     @view.app.url = fixup_url
     @view.app.user = @view.current_user
@@ -49,6 +53,7 @@ class RegisteredApplicationsController < ApplicationController
 
   def edit
     @view.app = RegisteredApplication.find(params[:id])
+    authorize @view.app
     # Response: Controller will forward_to
     #           /views/registered_applications/edit.html.erb
     #           with @view.
@@ -58,6 +63,7 @@ class RegisteredApplicationsController < ApplicationController
   # Note: we get here from a submit button via the edit view.
   def update
     @view.app = RegisteredApplication.find(params[:id])
+    authorize @view.app
     @view.app.assign_attributes(submitted_params_whitelist)
 
     # Response: redirect to or forward_to a view with msgs
@@ -73,6 +79,7 @@ class RegisteredApplicationsController < ApplicationController
 
   def destroy
     @view.app = RegisteredApplication.find(params[:id])
+    authorize @view.app
     # Response: redirect to or forward_to to a view.
     if @view.app.destroy
       flash[:notice] = "\"#{@view.app.name}\" was deleted successfully."

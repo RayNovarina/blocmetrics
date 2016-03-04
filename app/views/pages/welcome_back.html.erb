@@ -12,21 +12,22 @@
        #      .reorder('LOWER(topics.title) ASC')
        #      .distinct('topics.id')
 
+       #.where('user_id = ?', current_user.id)
        num_events = Event.joins(:registered_application)
-                         .where('user_id = ?', current_user.id)
+                         .where('user_id = ? AND events.created_at > ?', current_user.id, current_user.last_sign_in_at)
                          .count
        welcome_msg.concat(
          " your #{num_sites} monitored sites have had #{num_events} events \
-since your last visit #{time_ago_in_words(@view.current_user.created_at)} ago."
+since your last visit #{time_ago_in_words(@view.current_user.last_sign_in_at)} ago."
        )
        data_hash = Event.joins(:registered_application)
-                        .where('user_id = ?', current_user.id)
+                        .where('user_id = ? AND events.created_at > ?', current_user.id, current_user.last_sign_in_at)
                         .group('registered_applications.name')
                         .count
      end
   %>
   <h2><%= welcome_msg %>
-      <% if num_sites > 0 %>
+      <% if num_sites > 0 && num_events > 0%>
         <%= pie_chart data_hash %>
       <% end %>
   </h2>
