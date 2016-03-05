@@ -47,7 +47,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(_resource)
-    registered_applications_path
+    # Note: at this time: flash[:notice] => "Welcome! You have signed up successfully."
+    #                     current_user is valid.
+    # user_path(@view.current_user) # users#show
+    # registered_applications_path # registered_applications#index
+    if @view.flash_messages.key?(:notice) &&
+       @view.flash_messages[:notice] == 'Welcome! You have signed up successfully.'
+      # Our view makes up it own welcome msg for new users.
+      @view.flash_messages[:notice] = ''
+    end
+    welcome_new_path
   end
 
   # The path used after sign up for inactive accounts.

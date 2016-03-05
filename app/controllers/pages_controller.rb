@@ -2,10 +2,13 @@
 class PagesController < ApplicationController
   before_action :make_view_helper
 
-  def index
+  def about
   end
 
-  def about
+  def welcome_new
+  end
+
+  def welcome_back
   end
 
   private

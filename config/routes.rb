@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   # Landing page, About
   root 'pages#welcome'
   get  'about', to: 'pages#about'
-  get '/welcome_back', to: 'pages#welcome_back', as: 'welcome_back'
+  get '/welcome/new', to: 'pages#welcome_new', as: 'welcome_new'
+  get '/welcome/back', to: 'pages#welcome_back', as: 'welcome_back'
   # -------------------------------
 
   #-------------------------------
