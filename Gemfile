@@ -47,6 +47,9 @@ gem 'pry'
 # Use Devise authentication
 gem 'devise'
 #-------------------------------------------
+# Add Devise support for oauth for Facebook
+gem 'omniauth-facebook'
+#-------------------------------------------
 # Use Pundit authorization
 gem 'pundit'
 #-------------------------------------------

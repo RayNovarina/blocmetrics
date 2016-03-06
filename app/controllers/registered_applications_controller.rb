@@ -1,6 +1,7 @@
 #
 class RegisteredApplicationsController < ApplicationController
   before_action :make_view_helper
+  before_filter :authenticate_user!
 
   # A frequent practice is to place the standard CRUD actions in each controller
   # in the following order:
@@ -89,6 +90,11 @@ class RegisteredApplicationsController < ApplicationController
       flash.now[:alert] = 'There was an error deleting this Registered Site.'
       render :show
     end
+  end
+
+  # Decide where back button takes us.
+  def page_back_button_path
+    registered_applications_path
   end
 
   private
