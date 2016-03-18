@@ -1,40 +1,28 @@
 #
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :make_view_helper
   before_filter :configure_sign_up_params, only: [:create]
   before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    super do |_resource|
-      @view = ApplicationHelper::View.new(params)
-    end
-  end
+  # def new
+  # end
 
   # POST /resource
-  def create
-    super do |_resource|
-      @view = ApplicationHelper::View.new(params)
-    end
-  end
+  # def create
+  # end
 
   # GET /resource/edit
-  def edit
-    @view = ApplicationHelper::View.new(params)
-    super
-  end
+  # def edit
+  # end
 
   # PUT /resource
-  def update
-    @view = ApplicationHelper::View.new(params)
-    super
-  end
+  # def update
+  # end
 
   # DELETE /resource
-  def destroy
-    super do |_resource|
-      @view = ApplicationHelper::View.new(params)
-    end
-  end
+  # def destroy
+  # end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -66,4 +54,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def make_view_helper
+    @view = ApplicationHelper::View.new(self, resource || User.new)
+  end
 end

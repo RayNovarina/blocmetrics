@@ -1,25 +1,18 @@
 #
 class Users::ConfirmationsController < Devise::ConfirmationsController
+  before_action :make_view_helper
+
   # GET /resource/confirmation/new
-  def new
-    super do |_resource|
-      @view = ApplicationHelper::View.new(params)
-    end
-  end
+  # def new
+  # end
 
   # POST /resource/confirmation
-  def create
-    super do |_resource|
-      @view = ApplicationHelper::View.new(params)
-    end
-  end
+  # def create
+  # end
 
   # GET /resource/confirmation?confirmation_token=abcdef
-  def show
-    super do |_resource|
-      @view = ApplicationHelper::View.new(params)
-    end
-  end
+  # def show
+  # end
 
   # protected
 
@@ -32,4 +25,10 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   # def after_confirmation_path_for(resource_name)
   #   super(resource_name)
   # end
+
+  private
+
+  def make_view_helper
+    @view = ApplicationHelper::View.new(self, resource || User.new)
+  end
 end
