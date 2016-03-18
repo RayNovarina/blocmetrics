@@ -1,2 +1,9 @@
-<h1>RegisteredApplications#show</h1>
-<p>Find me in app/views/registered_applications/show.html.erb</p>
+<header class="css-body-header">
+  <%= render partial: 'show_page_header',
+             locals: @view.locals = { app: @view.app, apps_index: 0 } %>
+</header>
+
+<main class="css-body-main">
+  <%= render partial: 'show_registered_app',
+             locals: @view.locals = { app: @view.app, apps_index: 0 } %>
+</main>

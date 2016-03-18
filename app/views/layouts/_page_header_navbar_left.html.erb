@@ -14,7 +14,7 @@
         title: "#{@view.current_user.name} (#{@view.current_user.email})" do %>
         <i class="glyphicon glyphicon-user"> </i>&nbsp;
         <span class="css-user-name">
-          <%= "#{@view.current_user.email}" %>
+          <%= "#{@view.current_user.email.split('@').first[0,14]}" %>
         </span><% end %>
       </li>
     </ul>
