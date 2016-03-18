@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
-         :validatable, :confirmable
+         :validatable, :confirmable,
+         :omniauthable, omniauth_providers: [:facebook, :slack]
 
   validates :name, length: { minimum: 1, maximum: 100 }, presence: true
 

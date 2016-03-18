@@ -32,6 +32,45 @@ module UserExtensions
     # def index_action(_url_params)
     #  User.all
     # end
+    #
+    #-------------------- For Devise and omniauth support ----------------------
+    # per: https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
+    def from_omniauth(auth)
+      # where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      #  user.email = auth.info.email
+      #  user.password = Devise.friendly_token[0, 20]
+      #  user.name = auth.info.name
+      #  # user.image = auth.info.image # assuming the user model has an image
+      # end
+      if (user = User.where(provider: auth.provider, uid: auth.uid).first).nil?
+        # We have not authenticated this oauth user before.
+        if (user = User.where(email: auth.info.email).first).nil?
+          # We don't have this oauth user currently in our db. i.e. they haven't
+          # logged in with username/password manually before.
+          user = User.create(email: auth.info.email,
+                             password: Devise.friendly_token[0, 20],
+                             name: auth.info.name)
+        end
+        # We have the oauth user in our db, make sure provider, providerId,
+        # name, email addr are all in our db.
+        user.provider = auth.provider
+        user.uid = auth.uid
+        # auth.credentials[:token] =>
+        # "xoxp-24589067905-24581533508-27512172705-2a6058043e"
+        # auth.info.team => "Blocmetrics"
+        # if @view.app.save
+        #  # Response: tell browser to show this new registered site.
+        #  redirect_to @view.app, notice: 'Site was saved successfully.'
+        # else
+        #  # Response: redisplay the edit form with error msgs.
+        #  flash.now[:alert] = 'Error creating registered site. Please try again.'
+        #  render :new
+        # end
+        user.save!
+      end
+      # Return authenticated oauth User
+      user
+    end
   end
   #
   #======== INSTANCE METHODS, i.e. User.find_by(1).create_password_token()

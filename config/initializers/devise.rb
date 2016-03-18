@@ -280,4 +280,27 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  #
+  # oauth - omniauth provider, AppId, AppSecret, CallbackUrl
+  config.omniauth :slack,
+                  '24589067905.25644845299',
+                  '048cce3f02f8e529b29536c23b5c9521',
+                  scope: 'incoming-webhook,commands,'\
+                         'channels:write,channels:read,chat:write:user,'\
+                         'files:write:user,files:read,team:read,users:read'
+  config.omniauth :facebook, '1581359102184049',
+                  'e658ffd848d6f71774c8ceab7bdc627d'
+  # generate get authorize url as:
+  # https://www.facebook.com/dialog/oauth
+  # ?client_id=1581359102184049
+  # &redirect_uri=http://localhost:3000/users/auth/facebook/callback
+  # &response_type=code
+  # &scope=email
+  # &state=5afe06de71fd85ad846123a8535d10b9a92d23aa2e59a577
+  # after dropping the callback_url param, facebook display permissin box,
+  # i accepted and the url changed to:
+  # http://localhost:3000/users/auth/facebook/callback
+  # ?code=AQBd5YkHlgQzO7we2_tG4Ux0Pz7b09EH7v9O0FTlEu0mkrjYuA3vqcxWA5iRNXTTKWPy3OlhdovQWwpKpPbOYNAQToRpMUoOcjiuKgQK57A9yaM4BOx3dwEy9TihLNcKRyncCRD2rVOKDsqbVj_0FIKNzZe_ubKvkDPZUF6QeCEFg8OBQxtNgrDizYrALPvox4GXIQgr8yTfJZYT_rVGIe_Bm38EZU7Lt5HI0ey5cXpfROkuJiIiOUC_QZu-QI8Nht5OH65A7ZIQsbBkhHsBe3O-b4iBh63-jptcH0D1EdKPTXog9MqFhIfUchpe8etNOKcIQmUyNm3B-MfDXjxb0S8J
+  # &state=4ee68406be55905f2f9ea10a155f69a96e0fbd431b4375b4#_=_
+  # the url /user/auth/facebook is handled by /controllers/omniauth_callbacks_controller.rb
 end
