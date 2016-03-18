@@ -14,3 +14,10 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+# For our event api. In route.rb, we define our route with the namespace of api.
+# This allows us to use API as the namespace, instead of the non-acronymed
+# Api namespace.
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.acronym 'API'
+end
