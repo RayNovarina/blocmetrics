@@ -6,8 +6,15 @@
   <title>Blocmetrics</title>
   <% # Rails assest pipeline per: http://guides.rubyonrails.org/asset_pipeline.html %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
+  <% # Per: https://github.com/ankane/chartkick#installation
+     # And add the JavaScript files to your views. These files must be included
+     # before the helper methods.
+     # For Google Charts, use:
+  %>
+  <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <% # Popovers must be initialized with jQuery: select the specified element
      # and call the popover() method.
      # per: http://www.w3schools.com/bootstrap/bootstrap_popover.asp
@@ -18,7 +25,6 @@
     #});
   #</script>
   %>
-
   <%= csrf_meta_tags %>
   <!-- ==== End: HTML HEAD TAG === -->
 </head>
