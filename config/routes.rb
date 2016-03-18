@@ -1,9 +1,23 @@
 Rails.application.routes.draw do
+  get 'pages/index'
+
+  get 'pages/about'
+
+  # devise_for :users
+  # per: https://github.com/plataformatec/devise#getting-started
+  #   "you can customize each controller", "Tell the router to use this
+  #   controller"
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords',
+    confirmations: 'users/confirmations'
+  }
   # -------------------------------
   # App:
   # landing page, About
-  root 'welcome#index'
-  get  'about', to: 'welcome#about'
+  root 'pages#index'
+  get  'about', to: 'pages#about'
   # -------------------------------
 
   # The priority is based upon order of creation:

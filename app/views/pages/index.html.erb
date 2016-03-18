@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Welcome!</h1>
+  <p>Blocmetrics is an analytics service to track events on websites.</p><br>
+  <% if true #policy(User).create? %>
+    <p><%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg' %> to get started.</p>
+  <% end %>
+  <p>
+    <h4><%= link_to 'Learn More', '#learn-more-link', name: 'learn-more-link',
+                    'data-toggle' => 'collapse',
+                    'data-target' => '#learn-more'
+        %>
+    </h4>
+  </p>
+</div>
+
+<br><br><br>
+<div id="learn-more" class="container collapse css-learn-more">
+<div class="row">
+  <div class="col-md-4">
+    <h2>Simple to add websites</h2>
+    <p>Just <%= link_to 'sign up', new_user_registration_path %> and provide the url.
+    </p>
+  </div>
+  <div class="col-md-4">
+    <h2>Simple to track events</h2>
+      <p>Just add a single line of code to any web page.
+      </p>
+  </div>
+  <div class="col-md-4">
+    <h2>Simple notifications</h2>
+      <p>Just receive timely emails.
+      </p>
+  </div>
+</div>
+</div>
