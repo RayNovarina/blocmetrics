@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+/* ------------------------------------------ */
+/* Twitter Bootstrap 3 per:
+ * https://www.bloc.io/users/ray-novarina/checkpoints/1634#css-frameworks-and-bootstrap
+ * Add the following lines to the bottom of application.scss, to integrate
+ * the newly installed Bootstrap with our application:
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ /* ----------------------------------------- */
