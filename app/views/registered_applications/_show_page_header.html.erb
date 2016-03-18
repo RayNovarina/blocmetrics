@@ -1,4 +1,4 @@
-<div class="row" style="margin-bottom: 30px;">
+<div class="row">
   <div class="col-md-2">
   </div>
   <div class="col-md-8 css-page-title">
@@ -22,5 +22,50 @@
                     class: 'btn btn-xs btn-success' %>
       </span>
     <% end %>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom: 30px;">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8 css-site-url">
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading text-center">
+            <span class="css-regd-app-url" style="overflow: hidden; text-decoration: underline;">
+              <%= link_to @view.locals[:app].url, @view.locals[:app].url, target: '_blank' %>
+            <span>
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+  </div>
+</div>
+
+<div class="row" style="margin-bottom: 10px;">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4 css-site-events-heading">
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+            <span style="text-decoration: underline;">
+              Event Name
+            <span>
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 css-site-events-heading">
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+            <span style="text-decoration: underline;">
+              Count
+            <span>
+        </h4>
+      </div>
+    </div>
   </div>
 </div>

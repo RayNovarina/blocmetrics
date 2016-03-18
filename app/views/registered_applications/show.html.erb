@@ -4,6 +4,10 @@
 </header>
 
 <main class="css-body-main">
-  <%= render partial: 'show_registered_app',
-             locals: @view.locals = { app: @view.app, apps_index: 0 } %>
+  <% @view.event_group_counts.each do |name, count| %>
+    <%= render partial: '/events/event',
+               locals: @view.locals =
+                 { name: name, count: count }
+    %>
+  <% end %>
 </main>

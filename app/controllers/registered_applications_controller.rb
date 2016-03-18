@@ -14,6 +14,10 @@ class RegisteredApplicationsController < ApplicationController
 
   def show
     @view.app = RegisteredApplication.find(params[:id])
+    # {":bath:"=>1, ":football:"=>1, ":mahjong:"=>1, ":musical_keyboard:"=>1, ":saxophone:"=>1, ":slot_machine:"=>1}
+    @view.event_group_counts =
+      @view.app.events.group(:name).reorder('name ASC').count
+    # @view.events = @view.app.events.group_by(&:name)
     # Response: Controller will forward_to
     #           /views/registered_applications/show.html.erb with @view
   end

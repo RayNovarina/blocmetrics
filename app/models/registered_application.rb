@@ -1,5 +1,6 @@
 #
 class RegisteredApplication < ActiveRecord::Base
+  has_many :events, dependent: :destroy
   belongs_to :user
 
   validates :name, length: { minimum: 2 }, presence: true
