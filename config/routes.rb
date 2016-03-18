@@ -3,12 +3,15 @@ Rails.application.routes.draw do
   # per: https://github.com/plataformatec/devise#getting-started
   #   "you can customize each controller", "Tell the router to use this
   #   controller"
+  # and for oauth per:
+  #   https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
   devise_for :users,
              controllers: {
                sessions: 'users/sessions',
                registrations: 'users/registrations',
                passwords: 'users/passwords',
-               confirmations: 'users/confirmations'
+               confirmations: 'users/confirmations',
+               omniauth_callbacks: 'users/omniauth_callbacks'
              }
 
   resources :users, only: [:index, :show]
@@ -19,9 +22,11 @@ Rails.application.routes.draw do
 
   # -------------------------------
   # App:
-  # landing page, About
-  root 'pages#index'
+  # Landing page, About
+  root 'pages#welcome'
   get  'about', to: 'pages#about'
+  get '/welcome/new', to: 'pages#welcome_new', as: 'welcome_new'
+  get '/welcome/back', to: 'pages#welcome_back', as: 'welcome_back'
   # -------------------------------
 
   #-------------------------------

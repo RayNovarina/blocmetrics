@@ -32,12 +32,16 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for(_resource_or_scope)
-    # require 'pry'
-    # binding.pry
     # Note: at this time: flash[:notice] => "Signed in successfully."
     #                     current_user is valid.
     # user_path(@view.current_user) # users#show
-    registered_applications_path # registered_applications#index
+    # registered_applications_path # registered_applications#index
+    if @view.flash_messages.key?(:notice) &&
+       @view.flash_messages[:notice] == 'Signed in successfully.'
+      # Our view makes up it own welcome msg.
+      @view.flash_messages[:notice] = ''
+    end
+    welcome_back_path
   end
 
   private

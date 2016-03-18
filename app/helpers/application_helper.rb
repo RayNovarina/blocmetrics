@@ -16,23 +16,6 @@ module ApplicationHelper
       @model = model
     end
 
-    # def set_locals(new_locals)
-    #  @locals = new_locals
-    # end
-
-    # def locals
-    #  @locals
-    # end
-
-    # def locals(arg)
-    #  if defined? arg == 'Hash'
-    #    @locals = new_locals if defined? arg == 'Hash'
-    #    self
-    #  else
-    #    @locals[arg]
-    #  end
-    # end
-
     # If authentication system (i.e. Devise) active.
     # controller.is_a?(::DeviseController)
     def devise?
@@ -58,6 +41,20 @@ module ApplicationHelper
       #       Method defined at:
       # /gems/ruby-2.2.4/gems/devise-3.5.6/lib/devise/controllers/helpers.rb
       devise? ? @controller.current_user : User.new
+    end
+
+    # Get flash msgs from controller so we can override em.
+    def flash_messages
+      @controller.flash
+    end
+
+    # Let each controller decide where the back button goes.
+    def back_path
+      if (defined? @controller.page_back_button_path).nil?
+        :back
+      else
+        @controller.page_back_button_path
+      end
     end
   end
 end

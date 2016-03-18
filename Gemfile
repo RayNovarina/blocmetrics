@@ -47,6 +47,16 @@ gem 'pry'
 # Use Devise authentication
 gem 'devise'
 #-------------------------------------------
+# Add Devise support for oauth using omniauth
+# per: https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
+# Add omniauth strategy for Facebook
+# per: https://github.com/mkdynamic/omniauth-facebook
+gem 'omniauth-facebook'
+#-------------------------------------------
+# Add omniauth strategy for Slack
+# per: https://github.com/kmrshntr/omniauth-slack
+gem 'omniauth-slack'
+#-------------------------------------------
 # Use Pundit authorization
 gem 'pundit'
 #-------------------------------------------
